@@ -21,12 +21,12 @@ miniplet = 'sep'
 number_of_images = 7
 args_RAFT = easydict.EasyDict({
     "small": False,
-    "model": Path("models/RAFT/raft-sintel.pth"),
+    "model": Path("models/raft-sintel.pth"),
     "dataset": 'sintel',
     "mixed_precision": True,
 })
 if args_RAFT.small:
-    args_RAFT.model = Path(r"models\RAFT\raft-small.pth")
+    args_RAFT.model = Path(r"models/raft-small.pth")
 
 
 ## Make path to save Flow-GT data

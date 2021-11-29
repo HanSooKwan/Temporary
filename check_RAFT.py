@@ -13,14 +13,13 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 from modules.RAFT.core.raft import RAFT
-from modules.RAFT.evaluate import validate_chairs, validate_sintel, validate_kitti
 from modules.RAFT.demo import load_image, viz_point
 from modules.RAFT.core.utils.utils import InputPadder
 from modules.DAIN import MegaDepth
 
 args_RAFT = easydict.EasyDict({
     "small": False,
-    "model": Path("models/RAFT/raft-sintel.pth"),
+    "model": Path("models/raft-sintel.pth"),
     "dataset": 'sintel',
     "mixed_precision": True,
 })
@@ -79,7 +78,7 @@ for frame_num in range(16, 25):
     track_row = track_row + round(inc_row)
     track_col = track_col + round(inc_col)
 
-    print("\nEstimated Next pixel of 300, 900: [", track_row, ",", track_col, "]")
+    print("\nEstimated Next pixel: [", track_row, ",", track_col, "]")
 # save.close()
 
 print("\n\n")
