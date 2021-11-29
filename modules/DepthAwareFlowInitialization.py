@@ -163,15 +163,12 @@ class DepthAwareFlowInitialization_Function(Function):
 
 from torch.autograd import gradcheck
 
-def DepthAwareFlowInitialization_Function_gradchecker():
+def DepthAwareFlowInitialization_Function_gradchecker(device="cuda", set_seed=None):
+    if set_seed != None:
+        torch.manual_seed(0)
+
     batch = 4
-    input = [torch.randn(batch,2,4,8,dtype=torch.double,requires_grad=True), torch.randn(batch,4,8,dtype=torch.double, requires_grad=True), True, True,"cpu"]
-    test = gradcheck(DepthAwareFlowInitialization_Function.apply, input, eps=1e-6, atol=1e-4)
+    input = [torch.randn(batch, 2, 4, 8, dtype=torch.double, requires_grad=True),
+             torch.randn(batch, 4, 8, dtype=torch.double, requires_grad=True), True, True, device]
+    test = gradcheck(DepthAwareFlowInitialization_Function.apply, input, eps=1e-6, atol=1e-4, raise_exception=True)
     print(test)
-
-
-    # output = DepthAwareFlowInitialization_Function.apply(input[0], input[1], input[2], "cpu")
-    # Loss = torch.sum(output)
-    # print(output.shape, output.dtype)
-    # Loss.backward()
-    # print(Loss)
