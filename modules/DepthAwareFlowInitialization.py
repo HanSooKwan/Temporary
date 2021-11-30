@@ -171,7 +171,7 @@ def DepthAwareFlowInitialization_Function_gradchecker(device="cuda", set_seed=No
         torch.set_default_tensor_type(torch.FloatTensor)
 
     batch = 4
-    input = [torch.randn(batch, 2, 4, 8, dtype=torch.double, requires_grad=True),
-             torch.randn(batch, 4, 8, dtype=torch.double, requires_grad=True), True, True, device]
+    input = [torch.randn(batch, 2, 12, 26, dtype=torch.double, requires_grad=True),
+             torch.randn(batch, 1, 12, 26, dtype=torch.double, requires_grad=True), True, True, device]
     test = gradcheck(DepthAwareFlowInitialization_Function.apply, input, eps=1e-6, atol=1e-4, raise_exception=True)
     print(test)
