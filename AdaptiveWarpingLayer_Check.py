@@ -22,7 +22,7 @@ W = 8
 # Random Input tensors (for gradcheck)
 # image = torch.randn(batch,3,256,448,dtype=torch.float32, requires_grad=True)
 depth = torch.randn(batch,1,256,448,dtype=torch.float32, requires_grad=True) + 2.0
-context = torch.randn(batch, 99, 256, 448, dtype=torch.float32, requires_grad=True)
+context = torch.randn(batch, CH, 256, 448, dtype=torch.float32, requires_grad=True)
 kernel = torch.randn(batch,16,256,448,dtype=torch.float32,requires_grad=True)
 flow = torch.randn(batch,2,256,448,dtype=torch.float32,requires_grad=True)
 
