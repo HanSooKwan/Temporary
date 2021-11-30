@@ -15,7 +15,7 @@ if device == "cuda":
 else:
     torch.set_default_tensor_type(torch.FloatTensor)
 batch = 4
-CH = 99
+CH = 3*16+3
 H = 4
 W = 8
 
