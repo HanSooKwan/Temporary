@@ -34,7 +34,7 @@ class DepthAwareFlowInitialization_Function(Function):
 
         # flow shape: B, 2, H, W    /    inv_depth shape: B, 1, H, W (Already unsqueezed)
         B, H, W = inv_depth.shape
-
+        inv_depth = inv_depth.unsqueeze(dim=1)
         
         # Define meshgrid
         y_grid, x_grid = torch.meshgrid(torch.arange(0, H), torch.arange(0, W), indexing='ij')
@@ -154,7 +154,6 @@ class DepthAwareFlowInitialization_Function(Function):
             grad_inv_depth = torch.sum(grad_inv_depth, dim=0)
             # grad_inv_depth = (flow_raveled - holes_unfilled[mesh_after_raveled]) * inv_sum_weight[mesh_after_raveled].unsqueeze(dim=0) * (weights_raveled.unsqueeze(dim=0) != 0)
             grad_inv_depth = torch.reshape(grad_inv_depth, [B, H, W])
-            grad_inv_depth = grad_inv_depth.unsqueeze(dim=1)
             # print(grad_inv_depth.shape)
 
 
