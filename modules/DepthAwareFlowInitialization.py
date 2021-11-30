@@ -27,7 +27,7 @@ class DepthAwareFlowInitialization_Function(Function):
         
         # Define meshgrid
         y_grid, x_grid = torch.meshgrid(torch.arange(0, H), torch.arange(0, W), indexing='ij')
-        mesh_before = torch.stack([x_grid, y_grid], dim=0)
+        mesh_before = torch.stack([x_grid, y_grid], dim=0).unsqueeze(dim=0)
 
         # After flow, where are the pixels? [Getting S(x)]
         if not is_backward:
