@@ -31,7 +31,7 @@ print("Declaring model...")
 AWL_module = AdaptiveWarpingLayer(device=device).to(device)
 
 # Context image
-print("Checking output for channel 195 context image...")
+print("Checking output for channel {",CH,"} context image...")
 input = [context,
         #  depth,
         #  context,
@@ -53,3 +53,6 @@ input = [depth,
 
 warped_depth = AWL_module(depth, kernel, flow)
 print("warped_depth shape and dtype: ", warped_depth.shape, warped_depth.dtype)
+
+
+print("maximum memory allocated: ", torch.cuda.max_memory_allocated(), "bytes")
