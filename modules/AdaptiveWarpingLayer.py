@@ -16,8 +16,6 @@ class AdaptiveWarpingLayer(nn.Module):
 
 
 class AdaptiveWarpingLayer_Function(Function):
-    def __init__(self):
-        super(AdaptiveWarpingLayer_Function, self).__init__()
 
     @staticmethod
     def forward(ctx, image, kernel, flow, requires_grad, is_backward, device):

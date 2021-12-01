@@ -1,6 +1,6 @@
 import torch.nn as nn
 import math
-import torch.utils.model_zoo as model_zoo
+
 
 import torch
 
@@ -84,8 +84,10 @@ class Bottleneck(nn.Module):
 
 
 class ContextExtraction(nn.Module):
+    def __init__(self, block=None, num_blocks=3 ,dense = True,dilation=True, inplanes = 16):
+        if block==None:
+            block = BasicBlock
 
-    def __init__(self, block, num_blocks,dense = True,dilation=True, inplanes = 16):
         self.inplanes = inplanes
         super(ContextExtraction, self).__init__()
         self.dense = dense
