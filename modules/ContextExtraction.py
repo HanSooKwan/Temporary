@@ -85,8 +85,8 @@ class Bottleneck(nn.Module):
 
 class ContextExtraction(nn.Module):
 
-    def __init__(self, block, num_blocks,dense = True,dilation=True):
-        self.inplanes = 16
+    def __init__(self, block, num_blocks,dense = True,dilation=True, inplanes = 16):
+        self.inplanes = inplanes
         super(ContextExtraction, self).__init__()
         self.dense = dense
         self.num_block = num_blocks
